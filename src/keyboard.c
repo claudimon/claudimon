@@ -105,14 +105,14 @@ struct idt_ptr {
 static struct idt_entry idt[IDT_SIZE];
 static struct idt_ptr   idtp;
 
-/* Assembly stub declared in keyboard_asm.asm */
 extern void keyboard_isr(void);
+extern void default_isr(void);
 
 static void idt_set_gate(uint8_t num, uint32_t handler) {
     idt[num].offset_low  = handler & 0xFFFF;
-    idt[num].selector    = 0x08;          /* Kernel code segment */
+    idt[num].selector    = 0x08;
     idt[num].zero        = 0;
-    idt[num].type_attr   = 0x8E;          /* Present, ring 0, 32-bit interrupt gate */
+    idt[num].type_attr   = 0x8E;
     idt[num].offset_high = (handler >> 16) & 0xFFFF;
 }
 
@@ -138,7 +138,12 @@ static void pic_remap(void) {
 void keyboard_init(void) {
     pic_remap();
 
-    /* Install keyboard ISR at interrupt 0x21 (PIC1 offset 0x20 + IRQ1) */
+    /* Fill every IDT entry with a safe default handler first */
+    for (int i = 0; i < IDT_SIZE; i++) {
+        idt_set_gate(i, (uint32_t)default_isr);
+    }
+
+    /* Install keyboard ISR at interrupt 0x21 */
     idt_set_gate(0x21, (uint32_t)keyboard_isr);
 
     /* Load the IDT */
