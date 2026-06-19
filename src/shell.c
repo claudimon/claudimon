@@ -5,6 +5,14 @@
 #include "speaker.h"
 #include "theme.h"
 
+/* Theme globals declared in theme.c */
+extern vga_color_t theme_banner_color;
+extern vga_color_t theme_prompt_color;
+extern vga_color_t theme_text_color;
+extern vga_color_t theme_success_color;
+extern vga_color_t theme_error_color;
+extern vga_color_t theme_dir_color;
+
 #define CMD_BUFFER_SIZE 256
 
 /* ---- String helpers ---- */
