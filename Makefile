@@ -13,8 +13,8 @@ BOOT_OBJS = boot/boot.o boot/keyboard_asm.o
 C_SRCS    = src/kernel.c src/vga.c src/keyboard.c src/shell.c
 C_OBJS    = $(C_SRCS:.c=.o)
 OBJS      = $(BOOT_OBJS) $(C_OBJS)
-KERNEL    = mykernel.bin
-ISO       = mykernel.iso
+KERNEL    = claudimon.bin
+ISO       = claudimon.iso
 
 all: $(ISO)
 
