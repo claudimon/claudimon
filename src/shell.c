@@ -68,7 +68,7 @@ static void cmd_echo(const char* args) {
 
 static void cmd_version(void) {
     terminal_set_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLACK);
-    terminal_write("\nMyKernel v0.1.0\n");
+    terminal_write("\nClaudimon v0.1.0\n");
     terminal_set_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
     terminal_write("Built with love in C + Assembly\n\n");
 }
@@ -77,7 +77,7 @@ static void cmd_info(void) {
     terminal_set_color(VGA_COLOR_LIGHT_CYAN, VGA_COLOR_BLACK);
     terminal_write("\n=== System Information ===\n");
     terminal_set_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK);
-    terminal_write("  Kernel   : MyKernel v0.1.0\n");
+    terminal_write("  Kernel   : Claudimon v0.1.0\n");
     terminal_write("  Arch     : x86 (32-bit protected mode)\n");
     terminal_write("  Bootloader: GRUB (Multiboot2)\n");
     terminal_write("  Display  : VGA Text Mode 80x25\n");
@@ -202,7 +202,7 @@ static void execute(char* cmd) {
 
 static void print_prompt(void) {
     terminal_set_color(VGA_COLOR_LIGHT_GREEN, VGA_COLOR_BLACK);
-    terminal_write("mykernel");
+    terminal_write("claudimon");
     terminal_set_color(VGA_COLOR_WHITE, VGA_COLOR_BLACK);
     terminal_write("> ");
 }
@@ -213,7 +213,7 @@ void shell_run(void) {
 
     terminal_set_color(VGA_COLOR_LIGHT_CYAN, VGA_COLOR_BLACK);
     terminal_write("======================================\n");
-    terminal_write("        Welcome to MyKernel!          \n");
+    terminal_write("         Welcome to Claudimon!        \n");
     terminal_write("======================================\n");
     terminal_set_color(VGA_COLOR_LIGHT_GREY, VGA_COLOR_BLACK);
     terminal_write("Type 'help' to see available commands.\n\n");
