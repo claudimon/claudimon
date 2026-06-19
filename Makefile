@@ -1,25 +1,4 @@
-# ============================================
-# Makefile for Claudimon
-# ============================================
-# 
-# TOOLS NEEDED (install with your package manager):
-#   - nasm          (assembler for boot.asm)
-#   - gcc           (C compiler)
-#   - ld            (linker - comes with gcc/binutils)
-#   - grub-mkrescue (makes a bootable ISO)
-#   - qemu          (virtual machine to test in)
-#
-# Ubuntu/Debian:
-#   sudo apt install nasm gcc grub-pc-bin grub-common xorriso qemu-system-x86
-#
-# Arch Linux:
-#   sudo pacman -S nasm gcc grub xorriso qemu
 
-# ---- Compiler/Assembler Settings ----
-
-# We use gcc but tell it to produce "freestanding" code:
-# - No standard library (no printf, malloc etc. from libc)
-# - No OS assumptions
 CC      = gcc
 CFLAGS  = -m32                   \
            -ffreestanding        \
