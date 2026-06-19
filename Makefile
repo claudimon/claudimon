@@ -35,6 +35,8 @@ $(ISO): $(KERNEL)
 	grub2-mkrescue -o $(ISO) iso/
 
 run: $(ISO)
+	qemu-system-x86_64 -cdrom $(ISO) -m 32M -machine pcspk-audiodev=snd -audiodev pa,id=snd 2>/dev/null || \
+	qemu-system-x86_64 -cdrom $(ISO) -m 32M -machine pcspk-audiodev=snd -audiodev alsa,id=snd 2>/dev/null || \
 	qemu-system-x86_64 -cdrom $(ISO) -m 32M
 
 clean:
