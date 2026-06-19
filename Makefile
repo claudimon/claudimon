@@ -1,5 +1,5 @@
 # ============================================
-# Makefile for MyKernel
+# Makefile for Claudimon
 # ============================================
 # 
 # TOOLS NEEDED (install with your package manager):
