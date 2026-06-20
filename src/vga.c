@@ -70,6 +70,11 @@ void terminal_putchar(char c) {
     } else if (c == '\t') {
         /* Tab: advance to next 4-column boundary */
         terminal_col = (terminal_col + 4) & ~3;
+    } else if (c == '\b') {
+        /* Backspace: move cursor back one cell (don't wrap to prev row for simplicity) */
+        if (terminal_col > 0) {
+            terminal_col--;
+        }
     } else {
         /* Normal character: write it to the buffer */
         terminal_put_entry_at(c, terminal_color, terminal_col, terminal_row);
