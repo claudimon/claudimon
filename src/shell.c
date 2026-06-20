@@ -22,7 +22,6 @@ extern uint32_t total_memory_kb;
 /* ---- History ---- */
 static char history[HISTORY_SIZE][CMD_BUFFER_SIZE];
 static int  history_count = 0;
-static int  history_pos   = 0;  /* position when scrolling */
 
 static void history_add(const char* cmd) {
     if (cmd[0] == '\0') return;
@@ -530,12 +529,6 @@ void shell_run(void) {
                             len=i; pos=i; buf[len]='\0';
                         }
                     }
-                } else if(c2=='[' && c3=='S') {
-                    /* Shift+Up: scroll the screen view up (view old output) */
-                    terminal_scroll_up(3);
-                } else if(c2=='[' && c3=='T') {
-                    /* Shift+Down: scroll the screen view back down */
-                    terminal_scroll_down(3);
                 }
 
             /* --- Normal character --- */
